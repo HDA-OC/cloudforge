@@ -4,12 +4,33 @@ import { useState } from 'react';
 export default function Home() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // For now, just mark as submitted - we'll add actual storage later
-    console.log('Waitlist signup:', email);
-    setSubmitted(true);
+    setLoading(true);
+    setError('');
+
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'website' })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError(data.error || 'Something went wrong');
+      }
+    } catch {
+      setError('Failed to connect. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -68,19 +89,23 @@ export default function Home() {
               />
               <button
                 type="submit"
+                disabled={loading}
                 style={{
                   padding: '16px',
                   fontSize: '1rem',
                   fontWeight: '600',
-                  backgroundColor: '#f97316',
+                  backgroundColor: loading ? '#a1a1aa' : '#f97316',
                   color: '#09090b',
                   border: 'none',
                   borderRadius: '8px',
-                  cursor: 'pointer'
+                  cursor: loading ? 'not-allowed' : 'pointer'
                 }}
               >
-                Join the Waitlist
+                {loading ? 'Joining...' : 'Join the Waitlist'}
               </button>
+              {error && (
+                <p style={{ color: '#ef4444', margin: '8px 0 0', fontSize: '0.9rem' }}>{error}</p>
+              )}
             </form>
           ) : (
             <div style={{ 
@@ -306,18 +331,19 @@ export default function Home() {
                 />
                 <button
                   type="submit"
+                  disabled={loading}
                   style={{
                     padding: '16px 32px',
                     fontSize: '1rem',
                     fontWeight: '600',
-                    backgroundColor: '#f97316',
+                    backgroundColor: loading ? '#a1a1aa' : '#f97316',
                     color: '#09090b',
                     border: 'none',
                     borderRadius: '8px',
-                    cursor: 'pointer'
+                    cursor: loading ? 'not-allowed' : 'pointer'
                   }}
                 >
-                  Join Waitlist
+                  {loading ? 'Joining...' : 'Join Waitlist'}
                 </button>
               </form>
             ) : (
@@ -329,6 +355,9 @@ export default function Home() {
               }}>
                 ✓ You&apos;re on the list!
               </div>
+            )}
+            {error && !submitted && (
+              <p style={{ color: '#ef4444', margin: '12px 0 0', fontSize: '0.9rem' }}>{error}</p>
             )}
           </div>
         </div>
