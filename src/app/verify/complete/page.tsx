@@ -31,7 +31,7 @@ function VerifyCompleteContent() {
 
       if (data.verified) {
         setStatus('verified');
-        setMessage('Your identity has been verified. Welcome to CloudForge!');
+        setMessage('Your identity has been verified. Welcome to Sydian!');
       } else if (data.status === 'processing') {
         setStatus('processing');
         setMessage('Your verification is being processed. Check back in a moment.');
@@ -136,7 +136,7 @@ function VerifyCompleteContent() {
               marginBottom: '24px',
             }}>
               <p style={{ margin: 0, color: '#86efac', fontWeight: '500' }}>
-                ✓ Your agent now has the CloudForge Verified badge
+                ✓ Your agent now has the Sydian Verified badge
               </p>
             </div>
             <a

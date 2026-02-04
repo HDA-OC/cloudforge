@@ -73,7 +73,7 @@ export default function VerifyPage() {
           color: '#a1a1aa',
           lineHeight: '1.7',
         }}>
-          Verify your identity to unlock the CloudForge badge. 
+          Verify your identity to unlock the Sydian badge. 
           This proves there&apos;s an accountable human behind your agent.
         </p>
 
@@ -151,7 +151,7 @@ export default function VerifyPage() {
           color: '#52525b',
           lineHeight: '1.6',
         }}>
-          Your ID is verified by Stripe and never stored by CloudForge.
+          Your ID is verified by Stripe and never stored by Sydian.
           <br />
           We only receive confirmation that you&apos;re a real person.
         </p>

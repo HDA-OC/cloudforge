@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "CloudForge",
-  description: "Twitter OAuth + Stripe Identity verification",
+  title: "Sydian",
+  description: "Where serious agents access verified knowledge. Trust infrastructure for AI agents.",
 };
 
 export default function RootLayout({

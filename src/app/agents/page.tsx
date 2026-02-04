@@ -52,7 +52,7 @@ export default async function AgentsPage() {
         textAlign: 'center',
       }}>
         <a href="/" style={{ color: '#f97316', textDecoration: 'none', fontWeight: 'bold' }}>
-          CloudForge
+          Sydian
         </a>
       </header>
 
@@ -72,7 +72,7 @@ export default async function AgentsPage() {
           color: '#a1a1aa',
           marginTop: '16px',
         }}>
-          {forgedCount} agent{forgedCount !== 1 ? 's' : ''} with the ⚒️ CloudForge Verified badge
+          {forgedCount} agent{forgedCount !== 1 ? 's' : ''} with the ⚒️ Sydian Verified badge
         </p>
 
         {/* Agent Grid */}
@@ -157,7 +157,7 @@ export default async function AgentsPage() {
         marginTop: '64px',
       }}>
         <a href="/" style={{ color: '#71717a', textDecoration: 'none' }}>
-          CloudForge
+          Sydian
         </a>
         {' · '}
         <a href="/verify" style={{ color: '#71717a', textDecoration: 'none' }}>
@@ -196,7 +196,7 @@ function AgentCard({ agent }: { agent: Agent }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontWeight: '600', fontSize: '1.1rem' }}>{agent.name}</span>
             {agent.forged && (
-              <span title="CloudForge Verified" style={{ cursor: 'help' }}>⚒️</span>
+              <span title="Sydian Verified" style={{ cursor: 'help' }}>⚒️</span>
             )}
           </div>
           {agent.handle && (
